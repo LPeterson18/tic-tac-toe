@@ -6,8 +6,27 @@ class App extends Component{
   constructor(props){
     super(props)
     this.state = {
-      squares: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+      squares: ["", "", "", "", "", "", "", "", ""],
+      xLocation: true,
+      oLocation: false
     }
+  }
+
+  handleGamePlay = (index) => {
+    const { squares, xLocation, oLocation } = this.state
+    console.log(index)
+    if(xLocation === true){
+      squares[index] = "X"
+      this.setState({squares: squares, xLocation: false,
+        oLocation: true})
+        console.log(squares)
+    } else if (oLocation === true){
+      squares[index] = "O"
+      this.setState({squares: squares, xLocation: true,
+        oLocation: false})
+        console.log(squares)
+    }
+    
   }
 
   render(){
@@ -17,7 +36,12 @@ class App extends Component{
         <div className="gameboard">
         { this.state.squares.map((value,index) => {
           return(
-            <Square />
+            <Square 
+              value={ value }
+              key={ index }
+              index={ index }
+              handleGamePlay={ this.handleGamePlay }
+            />
           )
         })}
         </div>

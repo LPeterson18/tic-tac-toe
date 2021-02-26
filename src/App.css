@@ -12,3 +12,11 @@
   flex-direction: row;
   margin: 0 auto;
 }
+h1{
+  text-align: center;
+}
+
+.resetbutton{
+  text-align: center;
+  font-size: 100px;
+}

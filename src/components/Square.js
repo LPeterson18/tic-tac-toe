@@ -5,12 +5,13 @@ class Square extends Component{
   handleClick = () => {
     this.props.handleGamePlay(this.props.index)
     this.props.checkWinner(this.props.index)
+    this.props.checkArrayFull(this.props.index)
   }
 
   render(){
     return(
       <>
-        <div onClick={ this.handleClick } 
+        <div onClick={ this.handleClick }
         className="square">{ this.props.value }</div>
       </>
     )

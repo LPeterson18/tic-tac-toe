@@ -10,15 +10,17 @@ class App extends Component{
       xLocation: true,
       oLocation: false,
       gameOver: false,
-      winningLetter: ""
+      winningLetter: "",
+      gameOverLoser: false
     }
   }
 
   handleGamePlay = (index) => {
-    const { squares, xLocation, oLocation, gameOver } = this.state
+    const { squares, xLocation, oLocation, gameOver,gameOverLoser } = this.state
     console.log(index)
 
-    if(gameOver === true){
+    if(gameOverLoser === true && gameOver === false){
+    } else if(gameOver === true){
     } else if(squares[index] !== null){
     } else if(xLocation === true){
       squares[index] = "X"
@@ -32,6 +34,18 @@ class App extends Component{
         console.log(squares)
     }
   }
+
+  checkArrayFull = () => {
+    const { squares, } = this.state
+    for(let i = 0; i < squares.length; i++){
+      if ( squares[i] === null )
+    {
+      return this.setState({ gameOverLoser: false })
+    }
+  }
+  return this.setState({ gameOverLoser: true })
+  }
+
 
   //have array squares filled with Xs and Os
   //we want to compare squares to win condition arrays
@@ -68,12 +82,25 @@ class App extends Component{
     }
     //console.log(this.checkWinner(this.state.squares[1]))
 
+    restartGame = () => {
+    this.setState({
+      squares: Array(9).fill(null),
+      xLocation: true,
+      oLocation: false,
+      gameOver: false,
+      winningLetter: "",
+      gameOverLoser: false
+    })
+  }
 
 
   render(){
     return(
       <>
         <h1>Tic Tac Toe</h1>
+        <div className="playericonselection">
+
+        </div>
         <div className="gameboard">
         { this.state.squares.map((value,index) => {
           return(
@@ -83,13 +110,20 @@ class App extends Component{
               index={ index }
               handleGamePlay={ this.handleGamePlay }
               checkWinner={ this.checkWinner }
+              checkArrayFull={ this.checkArrayFull }
             />
           )
         })}
         </div>
+        <div className="resetbutton">
+          <button onClick={ this.restartGame }>Play Again</button>
+        </div>
 
-        { this.state.gameOver && 
+        { this.state.gameOver &&
           <p className="message">Congrats! { this.state.winningLetter } you won</p>
+        }
+        { this.state.gameOverLoser &&
+          <p className="message">Sorry bud! No one won.</p>
         }
       </>
     )

@@ -8,14 +8,18 @@ class App extends Component{
     this.state = {
       squares: Array(9).fill(null),
       xLocation: true,
-      oLocation: false
+      oLocation: false,
+      gameOver: false,
+      winningLetter: ""
     }
   }
 
   handleGamePlay = (index) => {
-    const { squares, xLocation, oLocation } = this.state
+    const { squares, xLocation, oLocation, gameOver } = this.state
     console.log(index)
-    if(squares[index] !== null){
+
+    if(gameOver === true){
+    } else if(squares[index] !== null){
     } else if(xLocation === true){
       squares[index] = "X"
       this.setState({squares: squares, xLocation: false,
@@ -34,6 +38,7 @@ class App extends Component{
   //works for both X and O wins
 
   checkWinner = (argument) => {
+    const { squares } = this.state
     const winArrays = [
       //Horizontal
       [0, 1, 2],
@@ -49,17 +54,19 @@ class App extends Component{
       ]
 
       //Create loop to compare each win Condition to current gameboard
-      for(let i = 0, i < winArrays.length, i++){
+      for(let i = 0; i < winArrays.length; i++){
         //array destructuring to easily compare
         const [a, b, c] = winArrays[i]
         //if the values of the squares array at the three indices of the win condition are all X or all O, return X or O
         if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
+          this.setState({ gameOver: true, winningLetter: squares[a] })
           return squares[a]
         }
       }
       //if none of winArrays are equal to current game board, return no winner.
       return null;
-  }
+    }
+    //console.log(this.checkWinner(this.state.squares[1]))
 
 
 
@@ -75,10 +82,15 @@ class App extends Component{
               key={ index }
               index={ index }
               handleGamePlay={ this.handleGamePlay }
+              checkWinner={ this.checkWinner }
             />
           )
         })}
         </div>
+
+        { this.state.gameOver && 
+          <p className="message">Congrats! { this.state.winningLetter } you won</p>
+        }
       </>
     )
   }

@@ -23,12 +23,12 @@ class App extends Component{
     } else if(gameOver === true){
     } else if(squares[index] !== null){
     } else if(xLocation === true){
-      squares[index] = "X"
+      squares[index] = "🐅"
       this.setState({squares: squares, xLocation: false,
         oLocation: true})
         console.log(squares)
     } else if (oLocation === true){
-      squares[index] = "O"
+      squares[index] = "🐆"
       this.setState({squares: squares, xLocation: true,
         oLocation: false})
         console.log(squares)
@@ -89,7 +89,8 @@ class App extends Component{
       oLocation: false,
       gameOver: false,
       winningLetter: "",
-      gameOverLoser: false
+      gameOverLoser: false,
+      
     })
   }
 
@@ -97,10 +98,15 @@ class App extends Component{
   render(){
     return(
       <>
-        <h1>Tic Tac Toe</h1>
-        <div className="playericonselection">
+        <h1>Jungle Cat Showdown</h1>
 
-        </div>
+        { this.state.xLocation &&
+          <div className="playerturn">It's 🐅 turn!</div>
+        }
+        { this.state.oLocation &&
+          <div className="playerturn">It's 🐆 turn!</div>
+        }
+          
         <div className="gameboard">
         { this.state.squares.map((value,index) => {
           return(
@@ -115,15 +121,16 @@ class App extends Component{
           )
         })}
         </div>
+        <br/>
         <div className="resetbutton">
           <button onClick={ this.restartGame }>Play Again</button>
         </div>
 
         { this.state.gameOver &&
-          <p className="message">Congrats! { this.state.winningLetter } you won</p>
+          <div className="message">Congrats { this.state.winningLetter } you're the toughest cat in the jungle!</div>
         }
         { this.state.gameOverLoser &&
-          <p className="message">Sorry bud! No one won.</p>
+          <div className="message">Sorry bud! No one won.</div>
         }
       </>
     )

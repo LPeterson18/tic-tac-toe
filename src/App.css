@@ -1,5 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
 .square{
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
   border: 2px solid black;
+  font-size: 100px;
+  text-align: center;
+  background-color: rgba(255, 162, 0, 0.618);
+}
+.gameboard{
+  display: flex;
+  width:620px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 auto;
+}
+h1{
+  text-align: center;
+  font-family: 'Acme', sans-serif;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+button{
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+  background-color: rgb(165, 223, 254);
+}
+
+.resetbutton{
+  text-align: center;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1535940360221-641a69c43bac?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=747&q=80');
+  background-size: cover;
+  height: 920px;
+}
+
+.message {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 45px;
+  font-family: 'Acme', sans-serif;
+  text-shadow: 3px 6px 4px rgba(255, 162, 0, 0.618);
+}
+
+.playerturn {
+  text-align: center;
+  font-family: 'Acme', sans-serif;
+  font-size: 40px;
+  margin-bottom: 10px;
 }

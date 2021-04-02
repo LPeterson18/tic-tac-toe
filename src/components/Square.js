@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
 
 class Square extends Component{
+
+  handleClick = () => {
+    this.props.handleGamePlay(this.props.index)
+    this.props.checkWinner(this.props.index)
+    this.props.checkArrayFull(this.props.index)
+  }
+
   render(){
     return(
       <>
-        <div className="square"></div>
+        <div onClick={ this.handleClick }
+        className="square">{ this.props.value }</div>
       </>
     )
   }

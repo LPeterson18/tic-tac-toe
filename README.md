@@ -1,5 +1,10 @@
 # Tic Tac Toe
 
+#To Run
+clone repo
+$ yarn
+$ yarn start
+
 ### Rules of React
 
 Here are some rules to keep handy as you build Tic Tac Toe. Following these protocols will help you avoid lots of problems.

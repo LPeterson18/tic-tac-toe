@@ -90,7 +90,7 @@ class App extends Component{
       gameOver: false,
       winningLetter: "",
       gameOverLoser: false,
-      
+
     })
   }
 
@@ -106,7 +106,7 @@ class App extends Component{
         { this.state.oLocation &&
           <div className="playerturn">It's 🐆 turn!</div>
         }
-          
+
         <div className="gameboard">
         { this.state.squares.map((value,index) => {
           return(

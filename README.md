@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-#To Run
+### To Run
 clone repo
 $ yarn
 $ yarn start
